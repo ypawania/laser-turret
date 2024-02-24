@@ -32,7 +32,8 @@ while True:
     center_x = x + w // 2
     center_y = y + h // 2
 
-    print(center_x, center_y)
+    ##print(center_x, center_y)
+    
     # Display the coordinates on the frame
     cv2.putText(frame, f"Center: ({center_x}, {center_y})", (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)
 
