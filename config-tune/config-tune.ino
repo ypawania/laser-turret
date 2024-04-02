@@ -1,5 +1,6 @@
 #include <ESP32Servo.h>
 Servo Xservo;  
+Servo Yservo;
 int pos = 0;   
 boolean startbit = false;
 boolean newlinerecieved = false;
@@ -11,8 +12,10 @@ String motor;
 int angle;
 
 void setup() {
-	Xservo.setPeriodHertz(50);    
+	Xservo.setPeriodHertz(50);   
+  Yservo.setPeriodHertz(50); 
 	Xservo.attach(18, 500, 2400); 
+  Yservo.attach(19, 500, 2900);
   Serial.begin(9600);
 }
 
@@ -43,8 +46,12 @@ void on_recieve(){
     motor = recieved_data.substring(0,1);
     angle = recieved_data.substring(1, recieved_data.length()).toInt();
 
-    if (motor = "X"){
+    if (motor == "X"){
       Xservo.write(angle);
+      delay(100);
+    }
+    else if (motor == "Y"){
+      Yservo.write(angle);
       delay(100);
     }
     

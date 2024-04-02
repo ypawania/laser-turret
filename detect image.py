@@ -1,8 +1,10 @@
+import time
 import numpy as np
 import cv2
+import serial
 
 cam=cv2.VideoCapture(0)
-
+ser = serial.Serial(port='COM8', baudrate=9600)
 
 hueLow=17
 hueHigh=29
@@ -36,6 +38,10 @@ while True:
     
     # Display the coordinates on the frame
     cv2.putText(frame, f"Center: ({center_x}, {center_y})", (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)
+    ser.write(('%X'+(str(center_x+20)) + '#').encode())
+    time.sleep(0.05)
+    ser.write(('%Y'+(str(center_y)) + '#').encode())
+    time.sleep(0.05)
 
     # Display the frame
     cv2.imshow('Yellow Object Tracking', frame)
