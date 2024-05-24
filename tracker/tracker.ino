@@ -52,13 +52,13 @@ void on_recieve(){
     int coordinate = recieved_data.substring(1, recieved_data.length()).toInt();
 
     if (motor == "X"){
-      angle = map(coordinate, 620, 10, leftCon, rightCon);
-      Xservo.write(angle);
+      //angle = map(coordinate, 620, 10, leftCon, rightCon);
+      Xservo.write(coordinate);
       delay(30);
     }
     else if (motor == "Y"){
-      angle = map(coordinate, 450, 10, downCon, upCon);
-      Yservo.write(angle);
+      //angle = map(coordinate, 450, 10, downCon, upCon);
+      Yservo.write(coordinate);
       delay(30);
     }
     
