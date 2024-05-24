@@ -38,10 +38,32 @@ while True:
     
     # Display the coordinates on the frame
     cv2.putText(frame, f"Center: ({center_x}, {center_y})", (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)
+<<<<<<< Updated upstream
     ser.write(('%X'+(str(center_x+20)) + '#').encode())
     time.sleep(0.05)
     ser.write(('%Y'+(str(center_y)) + '#').encode())
     time.sleep(0.05)
+=======
+    
+    if (center_x > center_x_laser):
+        ser.write(('%X'+(str(angle)) + '#').encode())
+        angle += 2
+        time.sleep(0.05)
+    if (center_x < center_x_laser):
+        ser.write(('%X'+(str(angle)) + '#').encode())
+        angle -= 2
+        time.sleep(0.05)
+    
+    if (center_y > center_y_laser):
+        ser.write(('%Y'+(str(angle)) + '#').encode())
+        angle += 2
+        time.sleep(0.05)
+    if (center_y < center_y_laser):
+        ser.write(('%Y'+(str(angle)) + '#').encode())
+        angle -= 2
+        time.sleep(0.05)
+        
+>>>>>>> Stashed changes
 
     # Display the frame
     cv2.imshow('Yellow Object Tracking', frame)
