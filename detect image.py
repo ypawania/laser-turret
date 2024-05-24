@@ -58,11 +58,17 @@ while True:
         time.sleep(0.05)
     if (center_x < center_x_laser):
         ser.write(('%X'+(str(angle)) + '#').encode())
-        angle -= 1
+        angle -= 2
         time.sleep(0.05)
         
-    #ser.write(('%Y'+(str(center_y)) + '#').encode())
-    #time.sleep(0.05)
+    if (center_y > center_y_laser):
+        ser.write(('%Y'+(str(angle)) + '#').encode())
+        angle += 2
+        time.sleep(0.05)
+    if (center_y < center_y_laser):
+        ser.write(('%Y'+(str(angle)) + '#').encode())
+        angle -= 2
+        time.sleep(0.05)
 
     # Display the frame
     cv2.imshow('Yellow Object Tracking', frame)
